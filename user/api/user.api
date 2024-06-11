@@ -1,0 +1,29 @@
+syntax = "v1"
+
+info (
+	title:   "type title here"
+	desc:    "type desc here"
+	author:  "type author here"
+	email:   "type email here"
+	version: "type version here"
+)
+
+type (
+	UserRequest {
+		Username string `json:"username"`
+		Password string `json:"password"`
+	}
+	UserResponse {
+		UserId int64  `json:"id"`
+		Token  string `json:"token"`
+	}
+)
+
+service user-api {
+	@handler register
+	post /api/users/register (UserRequest) returns (UserResponse)
+
+	@handler login
+	post /api/users/login (UserRequest) returns (UserResponse)
+}
+

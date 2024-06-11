@@ -1,0 +1,41 @@
+syntax = "v1"
+
+info (
+	title:   "type title here"
+	desc:    "type desc here"
+	author:  "type author here"
+	email:   "type email here"
+	version: "type version here"
+)
+
+type (
+	StockReq  {}
+	StockResp {
+		ExistStock int64 `json:"existStock"`
+	}
+	LockStockRequest {
+		GoodsId int64 `json:"goodsId"`
+	}
+	LockStockResponse {
+		LockId   int64 `json:"lockId"`
+		Quantity int64 `json:"quantity"`
+	}
+	GetGoodsFromCacheReq  {}
+	GetGoodsFromCacheResp {
+		Id    int64  `json:"id"`
+		Name  string `json:"name"`
+		Price int64  `json:"price"`
+	}
+)
+
+service goods-api {
+	@handler CheckStock
+	get /goods/checkstock (StockReq) returns (StockResp)
+
+	@handler LockStock
+	post /goods/lockstock (LockStockRequest) returns (LockStockResponse)
+
+	@handler GetGoodsFromCache
+	get /goods/getgoodsfromcache (GetGoodsFromCacheReq) returns (GetGoodsFromCacheResp)
+}
+

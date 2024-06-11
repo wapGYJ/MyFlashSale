@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pb";
+
+
+
+// 创建订单请求
+message CreateOrderRequest {
+  int64 userid = 1;
+  int64 goodsid = 2;
+}
+
+
+// 创建订单响应
+message CreateOrderResponse {
+  int64 orderid = 1;
+  string message = 2;
+}
+
+// 订单服务定义
+service OrderService {
+  // 创建订单
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+}
+

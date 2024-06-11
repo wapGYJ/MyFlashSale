@@ -1,0 +1,21 @@
+Name: user-api
+Host: 0.0.0.0
+Port: 8080
+
+RestConf:
+  Timeout: 3000
+  MaxConsPerHost: 100
+  MaxBytes: 1048576
+
+
+
+UserRpcConf:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+
+
+Rabbitmq:
+  Url: amqp://guest:guest@localhost:5672/
+  Queue: checkstock_queue

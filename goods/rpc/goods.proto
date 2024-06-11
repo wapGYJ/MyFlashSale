@@ -1,0 +1,58 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package="./pb";
+
+
+message StockReq {
+
+}
+message StockResp {
+  int64 stock=1;
+}
+
+
+
+message LockStockRequest {
+  int64 GoodsId = 1;
+}
+message LockStockResponse {
+  int64 GoodsId=1;
+  int64  Quantity=2;
+}
+
+
+
+
+message CacheReq{
+
+}
+message CacheResp{
+  bool Success=1;
+}
+
+
+message GetGoodsFromCacheReq{
+
+}
+message GetGoodsFromCacheResp{
+  int64 Id=1;
+  string Name=2;
+  int64  Price=3;
+}
+message GetPriceReq{
+  int64 goodsid=1;
+}
+message  GetPriceResp{
+  int64 price=1;
+}
+// 服务定义
+service GoodsService {
+  rpc CheckStock(StockReq) returns (StockResp);
+  rpc LockStock(LockStockRequest) returns (LockStockResponse);
+  rpc GoodsCache  (CacheReq) returns(CacheResp);
+  rpc GetGoodsFromCache (GetGoodsFromCacheReq)returns(GetGoodsFromCacheResp);
+  rpc GetPrice (GetPriceReq)returns(GetPriceResp);
+
+}

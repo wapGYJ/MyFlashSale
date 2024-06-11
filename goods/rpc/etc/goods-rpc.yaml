@@ -1,0 +1,27 @@
+Name: goods.rpc
+ListenOn: 0.0.0.0:8085
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: goods.rpc
+
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/goods?charset=utf8mb4&parseTime=True&loc=Local
+
+
+
+MyCache:
+  - Host: 127.0.0.1:6379
+    Type: node
+    Pass: ""
+    Tls: false
+    NonBlock: true
+    PingTimeout: 1s
+
+
+
+MyRedis:
+  Host: 127.0.0.1:6379
+  Type: node
+  Pass: ""
+  Key: goods.rpc

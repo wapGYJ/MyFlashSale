@@ -1,0 +1,19 @@
+Name: order-api
+Host: 0.0.0.0
+Port: 8082
+
+
+
+RestConf:
+  Timeout: 3000
+  MaxConsPerHost: 100
+  MaxBytes: 1048576
+
+
+
+
+OrderRpcConf:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: order.rpc

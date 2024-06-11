@@ -1,0 +1,21 @@
+Name: payment.rpc
+ListenOn: 0.0.0.0:8087
+Etcd:
+  Hosts:
+  - 127.0.0.1:2379
+  Key: payment.rpc
+
+Mysql:
+  DataSource: root:123456@tcp(127.0.0.1:3306)/payment?charset=utf8mb4&parseTime=True&loc=Local
+
+UserRpcConf:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: user.rpc
+
+GoodsRpcConf:
+  Etcd:
+    Hosts:
+      - 127.0.0.1:2379
+    Key: goods.rpc

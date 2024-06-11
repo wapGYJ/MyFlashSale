@@ -1,0 +1,26 @@
+syntax = "v1"
+
+info (
+	title:   "type title here"
+	desc:    "type desc here"
+	author:  "type author here"
+	email:   "type email here"
+	version: "type version here"
+)
+
+type (
+	CreateOrderReq {
+		Goodsid int64 `json:"goodsid"`
+		Userid  int64 `json:"userid"`
+	}
+	CreateOrderResp {
+		Orderid int64  `json:"orderid"`
+		Message string `json:"message"`
+	}
+)
+
+service order-api {
+	@handler CreateOrder
+	post /order/createorder (CreateOrderReq) returns (CreateOrderResp)
+}
+

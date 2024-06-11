@@ -1,0 +1,38 @@
+syntax = "v1"
+
+info (
+	title:   "type title here"
+	desc:    "type desc here"
+	author:  "type author here"
+	email:   "type email here"
+	version: "type version here"
+)
+
+type (
+	CreatePaymentReq {
+		Orderid int64 `json:"orderid"`
+		Userid  int64 `json:"userid"`
+		Goodsid int64 `json:"goodsid"`
+	}
+	CreatePaymentResp {
+		Paymentid int64 `json:"paymentid"`
+		status    int64 `json:"status"`
+	}
+	PayReq {
+		Userid    int64 `json:"userid"`
+		Paymentid int64 `json:"paymentid"`
+		Goodsid   int64 `json:"goodsid"`
+	}
+	PayResp {
+		message string `json:"message"`
+	}
+)
+
+service payment-api {
+	@handler CreatePayment
+	post /payment/createpayment (CreatePaymentReq) returns (CreatePaymentResp)
+
+	@handler Pay
+	post /payment/pay (PayReq) returns (PayResp)
+}
+

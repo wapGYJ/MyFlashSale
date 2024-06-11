@@ -1,0 +1,33 @@
+syntax = "proto3";
+
+package pb;
+
+option go_package = "./pb";
+
+
+
+message CreatePaymentRequest {
+  int64 orderid = 1;
+  int64 userid = 2;
+  int64 goodsid=3;
+}
+message CreatePaymentResponse {
+  int64 paymentid = 1;
+  int64 status = 2;
+}
+
+message PayReq{
+  int64 userid=1;
+  int64 paymentid=2;
+  int64 goodsid=3;
+
+}
+message PayResp{
+  string message=1;
+}
+
+service PaymentService {
+
+  rpc CreatePayment(CreatePaymentRequest) returns (CreatePaymentResponse);
+  rpc Pay(PayReq)returns(PayResp);
+}
